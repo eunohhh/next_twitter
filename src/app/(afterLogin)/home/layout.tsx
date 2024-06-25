@@ -1,5 +1,5 @@
-function HomeLayout() {
-    return <div>layout</div>;
+function HomeLayout({ children }: { children: React.ReactNode }) {
+    return <div>{children}</div>;
 }
 
 export default HomeLayout;
