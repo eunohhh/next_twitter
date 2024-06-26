@@ -3,7 +3,7 @@ import Link from "next/link";
 
 function MainPage() {
     return (
-        <>
+        <main className="flex flex-row h-dvh w-dvw">
             <div className="flex-1 flex justify-center items-center">
                 <Image
                     className="w-auto h-auto"
@@ -29,7 +29,7 @@ function MainPage() {
                     </button>
                 </Link>
             </div>
-        </>
+        </main>
     );
 }
 

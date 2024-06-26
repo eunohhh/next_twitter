@@ -4,10 +4,10 @@ import NavMenuPage from "./_components/NavMenu";
 
 function AfterLoginLayout({ children }: { children: React.ReactNode }) {
     return (
-        <div className="flex items-stretch bg-white">
+        <section className="flex items-stretch bg-white">
             <header className="flex items-end grow shrink-0 flex-col">
                 <section className="bg-orange-500 w-[275px] px-2 h-dvh">
-                    <div className="fixed w-inherit h-dvh flex flex-col">
+                    <section className="fixed w-inherit h-dvh flex flex-col">
                         <Link className="inline-block h-[56px] mt-[2px]" href="/home">
                             <div className="w-[50px] h-[50px] rounded-full flex justify-center items-center">
                                 <Image src={"/zlogo.png"} alt="z.com로고" width={50} height={50} />
@@ -24,12 +24,12 @@ function AfterLoginLayout({ children }: { children: React.ReactNode }) {
                                 게시하기
                             </Link>
                         </nav>
-                    </div>
+                    </section>
                 </section>
             </header>
-            <div className="flex items-start grow shrink h-dvh flex-col bg-slate-400">
-                <div className="h-full w-[990px] flex justify-between">
-                    <main className="w-[600px] h-[200dvh]">{children}</main>
+            <section className="flex items-start grow shrink h-dvh flex-col bg-slate-400">
+                <main className="h-full w-[990px] flex justify-between">
+                    <section className="w-[600px] h-[200dvh]">{children}</section>
                     <section className="w-[350px] h-full">
                         <div style={{ marginBottom: 60, width: "inherit" }}>
                             <form className="fixed h-10 w-inherit rounded-md bg-[rgb(239, 243, 244))] mt-1.5 mb-3 flex items-center">
@@ -53,9 +53,9 @@ function AfterLoginLayout({ children }: { children: React.ReactNode }) {
                             <h3 className="text-[12px]">팔로우 추천</h3>
                         </div>
                     </section>
-                </div>
-            </div>
-        </div>
+                </main>
+            </section>
+        </section>
     );
 }
 
