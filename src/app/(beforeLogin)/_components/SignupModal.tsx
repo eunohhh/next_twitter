@@ -3,9 +3,9 @@
 import { useRouter } from "next/navigation";
 import { ChangeEventHandler, FormEventHandler, useState } from "react";
 
-const inputDiv = "flex flex-col h-14 relative my-3";
+const inputDiv = "flex flex-col h-auto relative";
 const inputLabel = "text-base font-bold";
-const input = "w-full border-none text-base mt-4 pt-3 pr-2 pb-2 outline-none";
+const input = "w-full text-base py-1 border border-gray-300";
 
 export default function SignupModal() {
     const [id, setId] = useState("");
@@ -60,7 +60,7 @@ export default function SignupModal() {
     return (
         <>
             <div className="w-screen h-full flex justify-center absolute top-0 left-0 right-0 bottom-0 bg-black/[0.4]">
-                <div className="relative top-[5%] max-w-[80vw] min-w-[600px] rounded-md flex flex-col h-[550px]">
+                <div className="relative top-[5%] max-w-[80vw] min-w-[600px] rounded-md flex flex-col h-[550px] bg-white">
                     <div className="pt-9 pr-20 pb-5 font-bold text-3xl">
                         <button
                             className="w-[34px] h-[34px] rounded-md cursor-pointer border-none absolute bg-white left-4 right-4 flex justify-center items-center"
@@ -77,7 +77,7 @@ export default function SignupModal() {
                                 </g>
                             </svg>
                         </button>
-                        <div>계정을 생성하세요.</div>
+                        <div className="text-center text-3xl font-bold">계정을 생성하세요.</div>
                     </div>
                     <form>
                         <div className="flex-1 py-20">
