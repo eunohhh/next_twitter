@@ -38,7 +38,7 @@ export default function LoginModal() {
                     </button>
                     <div className="text-center text-3xl font-bold">로그인하세요.</div>
                 </div>
-                <form onSubmit={onSubmit}>
+                <form className="flex flex-col box-border p-4" onSubmit={onSubmit}>
                     <div className="flex-1 py-20">
                         <div className={inputDiv}>
                             <label className={inputLabel} htmlFor="id">
@@ -69,7 +69,12 @@ export default function LoginModal() {
                     </div>
                     <div>{message}</div>
                     <div>
-                        <button disabled={!id && !password}>로그인하기</button>
+                        <button
+                            className="w-full h-10 bg-blue-500 text-white rounded-full"
+                            disabled={!id && !password}
+                        >
+                            로그인하기
+                        </button>
                     </div>
                 </form>
             </div>
