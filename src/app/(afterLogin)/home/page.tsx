@@ -1,5 +1,5 @@
-function Home() {
+function HomePage() {
     return <main>page</main>;
 }
 
-export default Home;
+export default HomePage;
