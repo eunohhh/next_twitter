@@ -1,3 +1,4 @@
+import Post from "../_components/Post";
 import PostForm from "./_components/PostForm";
 import Tab from "./_components/Tab";
 import TabProvider from "./_components/TabProvider";
@@ -8,18 +9,18 @@ function HomePage() {
             <TabProvider>
                 <Tab />
                 <PostForm />
-                {/* <Post/>
-                <Post/>
-                <Post/>
-        <Post/>
-        <Post/>
-        <Post/>
-        <Post/>
-        <Post/>
-        <Post/>
-        <Post/>
-        <Post/>
-        <Post/> */}
+                <Post />
+                <Post />
+                <Post />
+                <Post />
+                <Post />
+                <Post />
+                <Post />
+                <Post />
+                <Post />
+                <Post />
+                <Post />
+                <Post />
             </TabProvider>
         </section>
     );
