@@ -1,6 +1,13 @@
+"use client";
+
+import { usePathname } from "next/navigation";
 import Trend from "./Trend";
 
 function TrendSection() {
+    const pathname = usePathname();
+
+    if (pathname === "/explore") return null;
+
     return (
         <div className="rounded-md mt-3 bg-white">
             <div className="text-xl font-bold py-3">
