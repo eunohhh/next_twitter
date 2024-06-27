@@ -5,7 +5,12 @@ import LogOutButton from "./_components/LogOutButton";
 import NavMenuPage from "./_components/NavMenu";
 import TrendSection from "./_components/TrendSection";
 
-function AfterLoginLayout({ children }: { children: React.ReactNode }) {
+interface AfterLoginLayoutProps {
+    children: React.ReactNode;
+    modal: React.ReactNode;
+}
+
+function AfterLoginLayout({ children, modal }: AfterLoginLayoutProps) {
     return (
         <section className="flex items-stretch bg-white">
             <header className="flex items-end grow shrink-0 flex-col">
@@ -63,6 +68,7 @@ function AfterLoginLayout({ children }: { children: React.ReactNode }) {
                     </section>
                 </main>
             </section>
+            {modal}
         </section>
     );
 }
