@@ -1,5 +1,7 @@
+import HomePage from "../../home/page";
+
 function ComposePage() {
-    return <div>ComposePage</div>;
+    return <HomePage />;
 }
 
 export default ComposePage;
