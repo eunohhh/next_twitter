@@ -16,7 +16,7 @@ export default function ProfilePage() {
             </div>
             <div className="flex items-center border-b border-white py-3 px-4">
                 <div className="flex items-center mr-[12px] rounded-full">
-                    <img src={user.image} alt={user.id} />
+                    <img className="w-[134px] rounded-full" src={user.image} alt={user.id} />
                 </div>
                 <div className="mx-3 flex-1">
                     <div className="font-bold text-xl">{user.nickname}</div>
