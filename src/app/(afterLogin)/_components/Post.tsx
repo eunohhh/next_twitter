@@ -1,3 +1,4 @@
+import type { Post } from "@/model/Post";
 import { faker } from "@faker-js/faker";
 import dayjs from "dayjs";
 import "dayjs/locale/ko";
@@ -12,8 +13,9 @@ dayjs.extend(relativeTime);
 
 type Props = {
     noImage?: boolean;
+    post: Post;
 };
-export default function Post({ noImage }: Props) {
+export default function Post({ noImage, post }: Props) {
     const target = {
         postId: 1,
         User: {

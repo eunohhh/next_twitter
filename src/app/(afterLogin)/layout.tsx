@@ -4,6 +4,7 @@ import Link from "next/link";
 import FollowRecommend from "./_components/FollowRecommend";
 import LogOutButton from "./_components/LogOutButton";
 import NavMenuPage from "./_components/NavMenu";
+import RQProvider from "./_components/RQProvider";
 import RightSearchZone from "./_components/RightSearchZone";
 import TrendSection from "./_components/TrendSection";
 
@@ -47,22 +48,24 @@ async function AfterLoginLayout({ children, modal }: AfterLoginLayoutProps) {
                     </div>
                 </section>
             </header>
-            <section className="flex items-start grow shrink h-dvh flex-col">
-                <main className="h-full w-[990px] flex justify-between">
-                    <section className="w-[600px] h-[200dvh]">{children}</section>
-                    <section className="w-[350px] h-full bg-white">
-                        <RightSearchZone />
-                        <TrendSection />
-                        <div className="text-md font-bold bg-[rgb(247, 249, 249] rounded-sm my-3 py-3 px-4">
-                            <h3 className="text-[12px]">팔로우 추천</h3>
-                            <FollowRecommend />
-                            <FollowRecommend />
-                            <FollowRecommend />
-                        </div>
-                    </section>
-                </main>
-            </section>
-            {modal}
+            <RQProvider>
+                <section className="flex items-start grow shrink h-dvh flex-col">
+                    <main className="h-full w-[990px] flex justify-between">
+                        <section className="w-[600px] h-[200dvh]">{children}</section>
+                        <section className="w-[350px] h-full bg-white">
+                            <RightSearchZone />
+                            <TrendSection />
+                            <div className="text-md font-bold bg-[rgb(247, 249, 249] rounded-sm my-3 py-3 px-4">
+                                <h3 className="text-[12px]">팔로우 추천</h3>
+                                <FollowRecommend />
+                                <FollowRecommend />
+                                <FollowRecommend />
+                            </div>
+                        </section>
+                    </main>
+                </section>
+                {modal}
+            </RQProvider>
         </section>
     );
 }
