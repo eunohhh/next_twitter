@@ -1,23 +1,33 @@
 "use client";
 
+import { useQueryClient } from "@tanstack/react-query";
+import { useSession } from "next-auth/react";
 import { useRef, useState } from "react";
 
-export default function CommentForm() {
+type Props = {
+    id: string;
+};
+export default function CommentForm({ id }: Props) {
     const [content, setContent] = useState("");
     const imageRef = useRef<HTMLInputElement>(null);
+    const { data: me } = useSession();
+
     const onClickButton = () => {};
     const onSubmit = () => {};
     const onChange = () => {};
-    const me = {
-        id: "zerohch0",
-        image: "/5Udwvqim.jpg",
-    };
 
+    const queryClient = useQueryClient();
+    const post = queryClient.getQueryData(["posts", id]);
+    console.log("post", post, id);
+
+    if (!post) {
+        return null;
+    }
     return (
         <form className="flex pt-4 pr-4 pb-2 border-b border-white " onSubmit={onSubmit}>
             <div className="mr-3 w-10">
                 <div className="w-10 h-10 rounded-full">
-                    <img src={me.image} alt={me.id} />
+                    <img src={me?.user?.image as string} alt={me?.user?.email as string} />
                 </div>
             </div>
             <div className="flex-1">

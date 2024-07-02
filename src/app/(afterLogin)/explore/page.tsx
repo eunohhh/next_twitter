@@ -1,5 +1,5 @@
 import SearchForm from "../_components/SearchForm";
-import Trend from "../_components/Trend";
+import TrendSection from "./_components/TrendSection";
 
 function ExplorePage() {
     return (
@@ -9,14 +9,7 @@ function ExplorePage() {
             </div>
             <div className="border-t border-white font-bold mb-3">
                 <h3 className="py-3 px-4">나를 위한 트렌드</h3>
-                <Trend />
-                <Trend />
-                <Trend />
-                <Trend />
-                <Trend />
-                <Trend />
-                <Trend />
-                <Trend />
+                <TrendSection />
             </div>
         </section>
     );

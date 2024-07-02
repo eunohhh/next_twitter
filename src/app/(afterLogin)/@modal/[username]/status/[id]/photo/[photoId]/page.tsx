@@ -1,43 +1,35 @@
 import CommentForm from "@/app/(afterLogin)/[username]/status/[id]/_components/CommentForm";
-import ActionButtons from "@/app/(afterLogin)/_components/ActionButtons";
-import Post from "@/app/(afterLogin)/_components/Post";
-import { faker } from "@faker-js/faker";
+import Comments from "@/app/(afterLogin)/[username]/status/[id]/_components/Comments";
+import SinglePost from "@/app/(afterLogin)/[username]/status/[id]/_components/SinglePost";
+import { getComments } from "@/app/(afterLogin)/[username]/status/[id]/_lib/getComments";
+import { getSinglePost } from "@/app/(afterLogin)/[username]/status/[id]/_lib/getSinglePost";
+import { HydrationBoundary, QueryClient, dehydrate } from "@tanstack/react-query";
+import ImageZone from "./_components/ImageZone";
 import PhotoModalCloseButton from "./_components/PhotoModalCloseButton";
 
-export default function Default() {
-    const photo = {
-        imageId: 1,
-        link: faker.image.urlLoremFlickr(),
-        Post: {
-            content: faker.lorem.text(),
-        },
-    };
+type Props = {
+    params: { id: string };
+};
+
+export default async function Default({ params }: Props) {
+    const { id } = params;
+    const queryClient = new QueryClient();
+    await queryClient.prefetchQuery({ queryKey: ["posts", id], queryFn: getSinglePost });
+    await queryClient.prefetchQuery({ queryKey: ["posts", id, "comments"], queryFn: getComments });
+    const dehydratedState = dehydrate(queryClient);
+
     return (
         <div className="bg-black/90 fixed z-10 left-0 top-0 w-dvw h-dvh flex flex-row">
-            <PhotoModalCloseButton />
-            <div className="flex-1 flex flex-col">
-                <img className="hidden" src={photo.link} alt={photo.Post?.content} />
-                <div
-                    className="bg-contain bg-no-repeat bg-center flex-1"
-                    style={{ backgroundImage: `url(${photo.link})` }}
-                />
-                <div className="flex flex-row justify-center items-center">
-                    <div className="w-[600px] h-[60px]">
-                        <ActionButtons white />
-                    </div>
+            <HydrationBoundary state={dehydratedState}>
+                <PhotoModalCloseButton />
+                <ImageZone id={id} />
+
+                <div className="w-[350px] bg-white border-l border-gray-200 overflow-auto">
+                    <SinglePost id={id} noImage />
+                    <CommentForm id={id} />
+                    <Comments id={id} />
                 </div>
-            </div>
-            <div className="w-[350px] bg-white border-l border-gray-200 overflow-auto">
-                <Post noImage />
-                <CommentForm />
-                <Post />
-                <Post />
-                <Post />
-                <Post />
-                <Post />
-                <Post />
-                <Post />
-            </div>
+            </HydrationBoundary>
         </div>
     );
 }

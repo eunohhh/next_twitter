@@ -1,18 +1,21 @@
 "use client";
 
+import { useSession } from "next-auth/react";
+import { useRouter } from "next/router";
 import { useRef, useState } from "react";
+
 export default function TweetModal() {
     const [content, setContent] = useState();
     const imageRef = useRef<HTMLInputElement>(null);
+    const { data: me } = useSession();
+    const router = useRouter();
+
     const onSubmit = () => {};
-    const onClickClose = () => {};
+    const onClickClose = () => {
+        router.back();
+    };
     const onClickButton = () => {};
     const onChangeContent = () => {};
-
-    const me = {
-        id: "zerohch0",
-        image: "/5Udwvqim.jpg",
-    };
 
     return (
         <div className="w-screen h-full flex justify-center absolute z-10 top-0 left-0 right-0 bottom-0 bg-black/25">
@@ -36,7 +39,10 @@ export default function TweetModal() {
                     <div className="px-4 flex-1 mt-[54px] flex flex-row">
                         <div className="mr-3 w-10">
                             <div className="w-10 h-10 rounded-full">
-                                <img src={me.image} alt={me.id} />
+                                <img
+                                    src={me?.user?.image as string}
+                                    alt={me?.user?.email as string}
+                                />
                             </div>
                         </div>
                         <div className="flex-1">
