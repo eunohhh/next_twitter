@@ -1,7 +1,7 @@
 import { auth } from "@/auth";
 import Image from "next/image";
 import Link from "next/link";
-import FollowRecommend from "./_components/FollowRecommend";
+import FollowRecommendSection from "./_components/FollowRecommendSection";
 import LogOutButton from "./_components/LogOutButton";
 import NavMenuPage from "./_components/NavMenu";
 import RQProvider from "./_components/RQProvider";
@@ -42,7 +42,7 @@ async function AfterLoginLayout({ children, modal }: AfterLoginLayoutProps) {
                                         게시하기
                                     </Link>
                                 </nav>
-                                <LogOutButton />
+                                <LogOutButton me={session} />
                             </>
                         )}
                     </div>
@@ -57,9 +57,7 @@ async function AfterLoginLayout({ children, modal }: AfterLoginLayoutProps) {
                             <TrendSection />
                             <div className="text-md font-bold bg-[rgb(247, 249, 249] rounded-sm my-3 py-3 px-4">
                                 <h3 className="text-[12px]">팔로우 추천</h3>
-                                <FollowRecommend />
-                                <FollowRecommend />
-                                <FollowRecommend />
+                                <FollowRecommendSection />
                             </div>
                         </section>
                     </main>
