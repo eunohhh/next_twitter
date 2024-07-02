@@ -95,7 +95,9 @@ export default function LoginModal() {
                             />
                         </div>
                     </div>
-                    <div>{message}</div>
+                    <div className="text-red-500 font-bold flex justify-center items-center">
+                        {message}
+                    </div>
                     <div>
                         <button
                             className="w-full h-10 bg-blue-500 text-white rounded-full"

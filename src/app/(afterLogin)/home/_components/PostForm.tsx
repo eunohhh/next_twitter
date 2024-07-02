@@ -4,6 +4,7 @@ import { Post } from "@/model/Post";
 import { Session } from "@auth/core/types";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { ChangeEventHandler, FormEvent, useRef, useState } from "react";
+import TextareaAutosize from "react-textarea-autosize";
 
 type Props = {
     me: Session | null;
@@ -114,7 +115,7 @@ export default function PostForm({ me }: Props) {
                 </div>
             </div>
             <div className="flex-1">
-                <textarea
+                <TextareaAutosize
                     className="w-full border-none py-3 text-xl leading-6 outline-none resize-none"
                     value={content}
                     onChange={onChange}
@@ -143,7 +144,14 @@ export default function PostForm({ me }: Props) {
                 <div className="w-full">
                     <div className="flex flex-row items-center">
                         <div className="flex-1">
-                            <input type="file" name="imageFiles" multiple hidden ref={imageRef} />
+                            <input
+                                type="file"
+                                name="imageFiles"
+                                multiple
+                                hidden
+                                ref={imageRef}
+                                onChange={onUpload}
+                            />
                             <button
                                 className="w-8 h-8 rounded-full bg-slate-200 bg-opacity-[0.01] transition-opacity flex justify-center items-center hover:bg-opacity-[0.1]"
                                 type="button"
