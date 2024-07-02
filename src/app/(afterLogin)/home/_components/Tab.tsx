@@ -1,12 +1,13 @@
 "use client";
-import { useState } from "react";
+import { useContext } from "react";
+import { TabContext } from "./TabProvider";
 
 const homeTabDiv = "flex-1 flex justify-center items-center cursor-pointer text-base relative";
 const tabIndicator =
     "h-[4px] self-center bg-sky-600 min-w-[56px] w-[56px] absolute bottom-0 rounded-full";
 
 export default function Tab() {
-    const [tab, setTab] = useState("rec");
+    const { tab, setTab } = useContext(TabContext);
 
     const onClickRec = () => {
         setTab("rec");

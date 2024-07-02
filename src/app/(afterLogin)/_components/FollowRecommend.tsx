@@ -1,13 +1,9 @@
 "use client";
 
-function FollowRecommend() {
-    const onFollow = () => {};
+import { User } from "@/model/User";
 
-    const user = {
-        id: "elonmusk",
-        nickname: "Elon Musk",
-        image: "/yRsRRjGO.jpg",
-    };
+function FollowRecommend({ user }: { user: User }) {
+    const onFollow = () => {};
 
     return (
         <div className="h-[66px] py-3 flex">

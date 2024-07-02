@@ -1,7 +1,9 @@
-import Post from "../_components/Post";
+import { Suspense } from "react";
 import PostForm from "./_components/PostForm";
 import Tab from "./_components/Tab";
+import TabDeciderSuspense from "./_components/TabDeciderSuspense";
 import TabProvider from "./_components/TabProvider";
+import Loading from "./loading";
 
 function HomePage() {
     return (
@@ -9,18 +11,9 @@ function HomePage() {
             <TabProvider>
                 <Tab />
                 <PostForm />
-                <Post />
-                <Post />
-                <Post />
-                <Post />
-                <Post />
-                <Post />
-                <Post />
-                <Post />
-                <Post />
-                <Post />
-                <Post />
-                <Post />
+                <Suspense fallback={<Loading />}>
+                    <TabDeciderSuspense />
+                </Suspense>
             </TabProvider>
         </section>
     );
