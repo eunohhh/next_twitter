@@ -1,8 +1,18 @@
 "use client";
 
+import { useRouter } from "next/router";
+
 export default function BackButton() {
+    const router = useRouter();
+    const onClick = () => {
+        router.back();
+    };
+
     return (
-        <button className="w-[34px] h-[34px] flex justify-center items-center rounded-full bg-white border-none hover:bg-slate-700/10">
+        <button
+            className="w-[34px] h-[34px] flex justify-center items-center rounded-full bg-white border-none hover:bg-slate-700/10"
+            onClick={onClick}
+        >
             <svg
                 width={24}
                 viewBox="0 0 24 24"

@@ -1,28 +1,28 @@
 "use client";
 
-import { faker } from "@faker-js/faker";
+import type { Room } from "@/model/Room";
 import dayjs from "dayjs";
 import "dayjs/locale/ko";
 import relativeTime from "dayjs/plugin/relativeTime";
+import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 
 dayjs.locale("ko");
 dayjs.extend(relativeTime);
 
-export default function Room() {
+type Props = {
+    room: Room;
+};
+
+export default function Room({ room }: Props) {
+    const { data: session } = useSession();
     const router = useRouter();
-    const user = {
-        id: "hero",
-        nickname: "영웅",
-        Messages: [
-            { roomId: 123, content: "안녕하세요.", createdAt: new Date() },
-            { roomId: 123, content: "안녕히가세요.", createdAt: new Date() },
-        ],
-    };
 
     const onClick = () => {
-        router.push(`/messages/${user.Messages.at(-1)?.roomId}`);
+        router.push(`/messages/${room.room}`);
     };
+
+    const user = room.Receiver.id === session?.user?.email ? room.Sender : room.Receiver;
 
     return (
         <div
@@ -30,7 +30,7 @@ export default function Room() {
             onClickCapture={onClick}
         >
             <div className="w-10 h-10 rounded-full mr-4">
-                <img className="w-10 h-10 rounded-full mr-4" src={faker.image.avatar()} alt="" />
+                <img className="w-10 h-10 rounded-full mr-4" src={user.image} alt="" />
             </div>
             <div className="flex flex-col text-slate-600 text-base">
                 <div className="roomUserInfo">
@@ -38,11 +38,9 @@ export default function Room() {
                     &nbsp;
                     <span>@{user.id}</span>
                     &nbsp; · &nbsp;
-                    <span className="postDate">
-                        {dayjs(user.Messages?.at(-1)?.createdAt).fromNow(true)}
-                    </span>
+                    <span className="postDate">{dayjs(room.createdAt).fromNow(true)}</span>
                 </div>
-                <div className="roomLastChat">{user.Messages?.at(-1)?.content}</div>
+                <div className="roomLastChat">{room.content}</div>
             </div>
         </div>
     );
