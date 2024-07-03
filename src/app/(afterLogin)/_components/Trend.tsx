@@ -6,7 +6,7 @@ const count = "text-gray-500 text-sm leading-4 font-light";
 function Trend({ trend }: { trend: Hashtag }) {
     return (
         <Link
-            href={`/search?q=${trend.title}`}
+            href={`/search?q=${encodeURIComponent(trend.title)}`}
             className="py-3 px-4 block hover:bg-black hover:bg-opacity-[0.03]"
         >
             <div className={count}>실시간트렌드</div>

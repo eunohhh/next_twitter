@@ -9,12 +9,7 @@ type Props = {
     searchParams: { q: string; f?: string; pf?: string };
 };
 export default function SearchResult({ searchParams }: Props) {
-    const { data } = useQuery<
-        IPost[],
-        Object,
-        IPost[],
-        [_1: string, _2: string, Props["searchParams"]]
-    >({
+    const { data } = useQuery<IPost[], Object, IPost[], [_1: string, _2: string, Props["searchParams"]]>({
         queryKey: ["posts", "search", searchParams],
         queryFn: getSearchResult,
         staleTime: 60 * 1000, // fresh -> stale, 5분이라는 기준
